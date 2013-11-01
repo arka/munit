@@ -1,17 +1,22 @@
 munit
 =====
 
-small matlab unit(munit) test class
+Small matlab unit(munit) test class
 
-Purpose:
-I was looking for something small and simple to use. And I would like just return MException back if no need for summary.
+Why: I was looking for something small and simple to use.
+
+Known things:
+* Cannot catch error in C code. 
+* Code implemented with a brief summary. And for flexibility and small code base, I would just return MException if no need for summary.
+* Code tested with Matlab 2011a, 2012a and 2013b.
 
 Alternative:
-Matlab's unit test framework in 2013b. (http://www.mathworks.com/help/matlab/matlab-unit-test-framework.html)
-Open source xUnity package for matlab. (http://www.mathworks.com/matlabcentral/fileexchange/22846-matlab-xunit-test-framework)
+* [Matlab's unit test](http://www.mathworks.com/help/matlab/matlab-unit-test-framework.html) framework in 2013b.
+* Open source [xUnity](http://www.mathworks.com/matlabcentral/fileexchange/22846-matlab-xunit-test-framework) package for matlab. 
 
-Use example:
-classdef munit_test1 < munit
+Usage:
+```matlab
+  classdef munit_test1 < munit
     methods
         function suiteSetup(obj) end        % run at suite init
         function suiteTeardown(obj) end     % run at suite done
@@ -28,6 +33,7 @@ classdef munit_test1 < munit
             error('ErrorID','What is the error?')
         end
     end
-end
+  end
+```
 
 Licence: MIT
