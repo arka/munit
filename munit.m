@@ -59,6 +59,7 @@ classdef munit < handle
             % run suite setup functions
             for i = 1:length(suiteSetupList)
                 case_str = strcat('obj.', suiteSetupList{i}, '()');
+                fprintf('run %s:\n', suiteSetupList{i});
                 try
                     eval(case_str);
                 catch error
@@ -74,6 +75,7 @@ classdef munit < handle
                     % run setup functions
                     for j = 1:length(setupList)
                         case_str = strcat('obj.', setupList{j}, '()');
+                        fprintf('run %s:\n', setupList{j});
                         try
                             eval(case_str);
                         catch error
@@ -83,6 +85,7 @@ classdef munit < handle
                     
                     % run test function
                     case_str = strcat('obj.', testList{i}, '()');
+                    fprintf('run %s:\n', testList{i});
                     eval(case_str);
                 catch error
                     next = length(errorlist)+1;
@@ -92,6 +95,7 @@ classdef munit < handle
                 % run tear down functions
                 for j = 1:length(teardownList)
                     case_str = strcat('obj.', teardownList{j}, '()');
+                    fprintf('run %s:\n', teardownList{j});
                     try
                         eval(case_str);
                     catch error
@@ -104,6 +108,7 @@ classdef munit < handle
             % run suite tear down functions
             for i = 1:length(suiteTeardownList)
                 case_str = strcat('obj.', suiteTeardownList{i}, '()');
+                fprintf('run %s:\n', suiteTeardownList{i});
                 try
                     eval(case_str);
                 catch error
